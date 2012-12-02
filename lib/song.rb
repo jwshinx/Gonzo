@@ -22,4 +22,9 @@ class Song
   end
   result
  end
+
+ def new_release_download_points
+  (price_code == NEW_RELEASE) ? 1 : 0
+ end
+
 end

@@ -12,22 +12,24 @@ class Customer
  end
 
  def statement
-  total_amount, new_release_download_points = 0, 0
+  new_release_download_points = 0
   result = "\nDownload Records for #{name}\n"
   @downloads.each do |element|
    new_release_download_points += element.new_release_download_points
-
    result += "\t" +element.song.title+ " " + element.charge.to_s + "\n"
-   total_amount += element.charge 
   end
 
-  result += "Amount owed is #{total_amount}\n"
+  result += "Amount owed is #{total_charge}\n"
   result += "You earned #{new_release_download_points} point(s)"
   result
  end
 
+private
  def amount_for download
   download.charge
  end
 
+ def total_charge
+  @downloads.inject(0) { |sum, element| sum + element.charge }
+ end
 end

@@ -1,19 +1,19 @@
 FactoryGirl.define do
  factory :killers_song, class: Song do
-  initialize_with { Song.new( 'Mr. Brightside', 'NEW_RELEASE') } 
+  initialize_with { Song.new( 'Mr. Brightside', 3)} 
  end
  factory :blind_melon_song, class: Song do
-  initialize_with { Song.new( 'No Rain', 'BARGAIN') } 
+  initialize_with { Song.new( 'No Rain', 1) } 
  end
  factory :sinatra_song, class: Song do
-  initialize_with { Song.new( 'Chicago', 'REGULAR') } 
+  initialize_with { Song.new( 'Chicago', 2) } 
  end
  factory :song do
-  initialize_with { Song.new( 'Stand', 'REGULAR') } 
+  initialize_with { Song.new( 'Stand', 2) } 
   
-  trait(:regular_price_code) { price_code 'REGULAR' } 
-  trait(:new_release_price_code) { price_code 'NEW_RELEASE' } 
-  trait(:bargain_price_code) { price_code 'BARGAIN' } 
+  trait(:regular_price_code) { price_code 2 } 
+  trait(:new_release_price_code) { price_code 3 } 
+  trait(:bargain_price_code) { price_code 1 } 
 
   factory :regular_price_song, traits: [:regular_price_code]
   factory :new_release_price_song, traits: [:new_release_price_code]

@@ -7,11 +7,14 @@ describe "Customer" do
   it { customer.name.should == 'Thom Yorke' }
   it { customer.downloads.length.should == 0 }
  end
+
  describe "with 1 download" do
   let(:c) { FactoryGirl.build( :one_download_customer ) }
   it { c.downloads.length.should == 1 }
   it { c.downloads.first.title.should == "Stand" }
+  it { c.downloads.first.price_code.should == 2 }
  end
+
  describe "with 3 downloads" do
   let(:c) { FactoryGirl.build( :three_downloads_customer ) }
   it { c.downloads.length.should == 3 }
@@ -23,6 +26,15 @@ describe "Customer" do
   end
   it "should include 'Chicago'" do 
    c.downloads.map(&:title).include?( "Chicago" ).should be_true 
+  end
+  it "returns summary information" do
+   result = "\nDownload Records for Thom Yorke\n" +
+            "\tMr. Brightside 3\n" +
+            "\tChicago 2\n" +
+            "\tNo Rain 1\n" +
+            "Amount owed is 6\n" +
+            "You earned 2 points"
+   c.statement.should == result
   end
  end
 end

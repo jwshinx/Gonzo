@@ -1,7 +1,7 @@
 class Song
- REGULAR = 0
- NEW_RELEASE = 1
- BARGAIN = 2
+ REGULAR = 2 
+ NEW_RELEASE = 3 
+ BARGAIN = 1 
 
  attr_reader :title
  attr_accessor :price_code

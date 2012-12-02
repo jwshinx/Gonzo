@@ -12,7 +12,7 @@ class Customer
  end
 
  def statement
-  total_amount, frequent_downloader_points = 0, 0
+  total_amount, new_release_download_points = 0, 0
   result = "\nDownload Records for #{name}\n"
   @downloads.each do |element|
    this_amount = amount_for element
@@ -20,12 +20,15 @@ class Customer
    result += "\t" + element.song.title + " " + this_amount.to_s + "\n"
    total_amount += this_amount
 
+   if element.song.price_code == Song::NEW_RELEASE
+    new_release_download_points += 1
+   end
   end
   
-  frequent_downloader_points = @downloads.length-1 
+  #frequent_downloader_points = @downloads.length-1 
 
   result += "Amount owed is #{total_amount}\n"
-  result += "You earned #{frequent_downloader_points} points"
+  result += "You earned #{new_release_download_points} point(s)"
   result
  end
 

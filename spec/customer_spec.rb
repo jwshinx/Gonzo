@@ -36,7 +36,7 @@ describe "Customer" do
             "\tChicago 2\n" +
             "\tNo Rain 1\n" +
             "Amount owed is 6\n" +
-            "You earned 2 points"
+            "You earned 1 point(s)"
    c.statement.should == result
   end
  end

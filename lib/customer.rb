@@ -12,10 +12,8 @@ class Customer
  end
 
  def statement
-  new_release_download_points = 0
   result = "\nDownload Records for #{name}\n"
   @downloads.each do |element|
-   new_release_download_points += element.new_release_download_points
    result += "\t" +element.song.title+ " " + element.charge.to_s + "\n"
   end
 
@@ -31,5 +29,10 @@ private
 
  def total_charge
   @downloads.inject(0) { |sum, element| sum + element.charge }
+ end
+ def new_release_download_points 
+  @downloads.inject(0) do |sum, element| 
+   sum + element.new_release_download_points 
+  end
  end
 end

@@ -26,7 +26,7 @@ class Song
  end
 
  def new_release_download_points
-  (price_code == NEW_RELEASE) ? 1 : 0
+  @price.new_release_download_points
  end
 
 end

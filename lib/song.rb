@@ -9,4 +9,17 @@ class Song
  def initialize title, price_code
   @title, @price_code = title, price_code
  end
+
+ def charge
+  result = 0
+  case price_code
+  when REGULAR
+   result += 2
+  when NEW_RELEASE
+   result += 3
+  when BARGAIN
+   result += 1
+  end
+  result
+ end
 end

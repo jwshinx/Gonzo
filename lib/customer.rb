@@ -15,9 +15,7 @@ class Customer
   total_amount, new_release_download_points = 0, 0
   result = "\nDownload Records for #{name}\n"
   @downloads.each do |element|
-   if element.song.price_code == Song::NEW_RELEASE
-    new_release_download_points += 1
-   end
+   new_release_download_points += element.new_release_download_points
 
    result += "\t" +element.song.title+ " " + element.charge.to_s + "\n"
    total_amount += element.charge 

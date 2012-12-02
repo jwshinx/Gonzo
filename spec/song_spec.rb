@@ -5,8 +5,9 @@ describe "Song" do
  #include World
 
  describe "normally" do
-  let(:song) { FactoryGirl.build( :song ) }
-  it { song.title.should == 'Stand' }
+  #let(:song) { FactoryGirl.build( :song ) }
+  let(:song) { FactoryGirl.build( :sinatra_song ) }
+  it { song.title.should == 'Chicago' }
   it { song.price_code.should == 'REGULAR' }
  end
  describe "when new release" do

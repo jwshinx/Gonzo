@@ -15,17 +15,9 @@ class Customer
   total_amount, frequent_downloader_points = 0, 0
   result = "\nDownload Records for #{name}\n"
   @downloads.each do |element|
-   this_amount = 0
-   case element.price_code
-   when Song::REGULAR
-    this_amount += 2 
-   when Song::NEW_RELEASE
-    this_amount += 3 
-   when Song::BARGAIN
-    this_amount += 1 
-   end
+   this_amount = amount_for element
 
-   result += "\t" + element.title + " " + this_amount.to_s + "\n"
+   result += "\t" + element.song.title + " " + this_amount.to_s + "\n"
    total_amount += this_amount
 
   end
@@ -36,4 +28,9 @@ class Customer
   result += "You earned #{frequent_downloader_points} points"
   result
  end
+
+ def amount_for download
+  download.charge
+ end
+
 end
